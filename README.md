@@ -27,13 +27,13 @@ Additional Features (most important to less important):
 - give control over funds to OpenSats (payment functionality) → marked as “funding secured” 
 - add dispute/claim 
 
-### Rough enitity relationship diagram:
+### Rough/incomplete enitity relationship diagram:
 
 ![er-diagram](https://user-images.githubusercontent.com/24638508/121535868-d3f92d00-ca02-11eb-9d9e-10c0af5dd9b6.png)
 
 ### SQL TABLE DESIGN
 ```
-  await client.query(` CREATE TABLE IF NOT EXISTS People(
+ await client.query(` CREATE TABLE IF NOT EXISTS People(
       id SERIAL PRIMARY KEY,
       name CHAR(64),
       url CHAR(128),
@@ -45,21 +45,21 @@ Additional Features (most important to less important):
     provider_id CHAR(128),
     provider_name CHAR(32),
     created_on TIMESTAMP NOT NULL,
-    url CHAR(128) NOT NULL,
+    person_id INTEGER NOT NULL REFERENCES People(id),
     privilege_level INT DEFAULT 0,
     UNIQUE(provider_id,provider_name)
   )
     `)
 
-    await client.query(`CREATE TABLE IF NOT EXISTS Issues(
-      id SERIAL PRIMARY KEY,
-      user_id INTEGER NOT NULL REFERENCES Users(id),
-      created_on TIMESTAMP NOT NULL,
-      title CHAR(100) NOT NULL,
-      link CHAR(128),
-      description TEXT,
-      PRIMARY KEY(id)
-    )`)
+  await client.query(`CREATE TABLE IF NOT EXISTS Issues(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES Users(id),
+    created_on TIMESTAMP NOT NULL,
+    title CHAR(100) NOT NULL,
+    link CHAR(128),
+    description TEXT,
+    PRIMARY KEY(id)
+  )`)
 
   await client.query(`CREATE TABLE IF NOT EXISTS Bounties(
     issue_id INTEGER NOT NULL REFERENCES Issues(id),
