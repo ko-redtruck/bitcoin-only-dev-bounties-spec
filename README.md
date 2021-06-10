@@ -27,3 +27,6 @@ Additional Features (most important to less important):
 - give control over funds to OpenSats (payment functionality) → marked as “funding secured” 
 - add dispute/claim 
 
+### Rough enitity relationship diagram:
+
+![er-diagram](https://user-images.githubusercontent.com/24638508/121535868-d3f92d00-ca02-11eb-9d9e-10c0af5dd9b6.png)
