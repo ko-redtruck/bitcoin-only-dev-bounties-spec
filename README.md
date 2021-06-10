@@ -88,4 +88,23 @@ Additional Features (most important to less important):
     PRIMARY KEY(user_id,issue_id),
     weight INTEGER DEFAULT 1
   )`)
-´´´
+```
+
+### Urls
+- /sign-up
+- /auth/login 
+- /auth/login/Github
+- /auth/login/Twitter
+- /auth/login/LNURL-Auth
+
+- /post/issue (without bounty) [GET,POST]
+- /post/issue/close [POST]
+- /post/bounty (issue with bounty) [GET,POST]
+- /post/bounty/pay [POST] --> marked as payed out
+- /post/add-bounty [POST]
+- /post/comment [POST]
+- /post/upvote [POST]
+
+- /issues [GET]
+- /issues&bounty=true [GET]
+- /issues/<id> [GET]
