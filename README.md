@@ -33,11 +33,12 @@ Additional Features (most important to less important):
 
 ### SQL TABLE DESIGN
 ```
- await client.query(` CREATE TABLE IF NOT EXISTS People(
+await client.query(` CREATE TABLE IF NOT EXISTS Identities(
       id SERIAL PRIMARY KEY,
       name CHAR(64),
       url CHAR(128),
-      UNIQUE(url)
+      UNIQUE(url),
+      UNIQUE(name)
   )`)
 
   await client.query(` CREATE TABLE IF NOT EXISTS Users(
@@ -45,7 +46,7 @@ Additional Features (most important to less important):
     provider_id CHAR(128),
     provider_name CHAR(32),
     created_on TIMESTAMP NOT NULL,
-    person_id INTEGER NOT NULL REFERENCES People(id),
+    identity_id INTEGER NOT NULL REFERENCES Identities(id),
     privilege_level INT DEFAULT 0,
     UNIQUE(provider_id,provider_name)
   )
@@ -64,11 +65,13 @@ Additional Features (most important to less important):
   await client.query(`CREATE TABLE IF NOT EXISTS Bounties(
     issue_id INTEGER NOT NULL REFERENCES Issues(id),
     user_id INTEGER NOT NULL REFERENCES Users(id),
+    identity_id INTEGER NOT NULL REFERENCES Identities(id),
     amount INT NOT NULL;
     created_on TIMESTAMP NOT NULL,
     funding_secured BOOLEAN DEFAULT false,
+    announchment_link CHAR(128),
     condition_text TEXT,
-    PRIMARY KEY(issue_id,user_id)
+    PRIMARY KEY(issue_id,user_id,identity_id)
   )
 `)
 
@@ -84,7 +87,7 @@ Additional Features (most important to less important):
 
   await client.query(`CREATE TABLE IF NOT EXISTS Votes(
     user_id INTEGER NOT NULL REFERENCES Users(id),
-    issue_id INTEGER NOT NULL REFERENCES Issues(id),
+    comment_id INTEGER NOT NULL REFERENCES Comments(id),
     PRIMARY KEY(user_id,issue_id),
     weight INTEGER DEFAULT 1
   )`)
@@ -101,7 +104,7 @@ Additional Features (most important to less important):
 - /post/issue/close [POST]
 - /post/bounty (issue with bounty) [GET,POST]
 - /post/bounty/pay [POST] --> marked as payed out
-- /post/add-bounty [POST]
+- /post/bounty/add [POST]
 - /post/comment [POST]
 - /post/upvote [POST]
 
