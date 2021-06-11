@@ -19,7 +19,7 @@ Additional Features (most important to less important):
 
 1)
 - moderator functionality in UI
-- upvotes 
+- upvotes (You can only upvote comments, if you want to "upvote" an issue/bounty add your own bounty to signal support)
 - comments
 - lnurl-auth login
 
