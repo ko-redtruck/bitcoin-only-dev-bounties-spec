@@ -33,7 +33,7 @@ Additional Features (most important to less important):
 
 ### SQL TABLE DESIGN
 ```
-await client.query(` CREATE TABLE IF NOT EXISTS Identities(
+  await client.query(` CREATE TABLE IF NOT EXISTS Identities(
       id SERIAL PRIMARY KEY,
       name CHAR(64),
       url CHAR(128),
@@ -58,15 +58,14 @@ await client.query(` CREATE TABLE IF NOT EXISTS Identities(
     created_on TIMESTAMP NOT NULL,
     title CHAR(100) NOT NULL,
     link CHAR(128),
-    description TEXT,
-    PRIMARY KEY(id)
+    description TEXT
   )`)
 
   await client.query(`CREATE TABLE IF NOT EXISTS Bounties(
     issue_id INTEGER NOT NULL REFERENCES Issues(id),
     user_id INTEGER NOT NULL REFERENCES Users(id),
     identity_id INTEGER NOT NULL REFERENCES Identities(id),
-    amount INT NOT NULL;
+    amount INT NOT NULL,
     created_on TIMESTAMP NOT NULL,
     funding_secured BOOLEAN DEFAULT false,
     announchment_link CHAR(128),
@@ -79,7 +78,7 @@ await client.query(` CREATE TABLE IF NOT EXISTS Identities(
   await client.query(`CREATE TABLE IF NOT EXISTS Comments(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES Users(id),
-    text TEXT NOT NULL
+    text TEXT NOT NULL,
     issue_id INTEGER REFERENCES Issues(id),
     comment_id INTEGER REFERENCES Comments(id)
   )
@@ -88,7 +87,7 @@ await client.query(` CREATE TABLE IF NOT EXISTS Identities(
   await client.query(`CREATE TABLE IF NOT EXISTS Votes(
     user_id INTEGER NOT NULL REFERENCES Users(id),
     comment_id INTEGER NOT NULL REFERENCES Comments(id),
-    PRIMARY KEY(user_id,issue_id),
+    PRIMARY KEY(user_id,comment_id),
     weight INTEGER DEFAULT 1
   )`)
 ```
