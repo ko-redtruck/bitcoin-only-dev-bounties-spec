@@ -33,20 +33,19 @@ Additional Features (most important to less important):
 
 ### SQL TABLE DESIGN
 ```
-  await client.query(` CREATE TABLE IF NOT EXISTS Identities(
-      id SERIAL PRIMARY KEY,
-      name CHAR(64),
-      url CHAR(128),
-      UNIQUE(url),
+await client.query(` CREATE TABLE IF NOT EXISTS Identities(
+      url VARCHAR(128),
+      name VARCHAR(64),
+      PRIMARY KEY(url),
       UNIQUE(name)
   )`)
 
   await client.query(` CREATE TABLE IF NOT EXISTS Users(
     id SERIAL PRIMARY KEY,
-    provider_id CHAR(128),
-    provider_name CHAR(32),
+    provider_id VARCHAR(128),
+    provider_name VARCHAR(32),
     created_on TIMESTAMP NOT NULL,
-    identity_id INTEGER NOT NULL REFERENCES Identities(id),
+    identity_url VARCHAR(128) REFERENCES Identities(url),
     privilege_level INT DEFAULT 0,
     UNIQUE(provider_id,provider_name)
   )
@@ -56,21 +55,23 @@ Additional Features (most important to less important):
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES Users(id),
     created_on TIMESTAMP NOT NULL,
-    title CHAR(100) NOT NULL,
-    link CHAR(128),
-    description TEXT
+    title VARCHAR(100) NOT NULL,
+    link VARCHAR(128),
+    description TEXT,
+    UNIQUE(title)
   )`)
 
   await client.query(`CREATE TABLE IF NOT EXISTS Bounties(
     issue_id INTEGER NOT NULL REFERENCES Issues(id),
     user_id INTEGER NOT NULL REFERENCES Users(id),
-    identity_id INTEGER NOT NULL REFERENCES Identities(id),
+    identity_url VARCHAR(128) NOT NULL REFERENCES Identities(url),
     amount INT NOT NULL,
     created_on TIMESTAMP NOT NULL,
     funding_secured BOOLEAN DEFAULT false,
-    announchment_link CHAR(128),
+    announchment_link VARCHAR(128),
     condition_text TEXT,
-    PRIMARY KEY(issue_id,user_id,identity_id)
+    payed_out_to VARCHAR(128) REFERENCES Identities(url),
+    PRIMARY KEY(issue_id,user_id,identity_url)
   )
 `)
 
