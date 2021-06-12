@@ -1,4 +1,5 @@
 # bitcoin-only-dev-bounties-spec
+### WIP Implementation: https://github.com/ko-redtruck/bitcoin-only-open-source-bounties-express
 The site should give visitors an overview over all available Bitcoin bounties. We do not expect all bounty issuers to post their bounties themselves, so users can publish bounties linked to posts from Twitter or GitHub. If someone anonymous (Login with LNURL-Auth) wants to start a bounty the person should send the funds to OpenSats to ensure the payment is made if the task has been fulfilled. In cases of dispute separate moderators or OpenSats board decides if the bounty is paid out. 
 
 Normal users also have the option to give OpenSats control over the funds to get higher trust. Users can also pledge a bounty to an already existing task/issue. They can add/clarify their own conditions which should not differ much from the existing conditions.
