@@ -8,25 +8,25 @@ Furthermore users can post an issue/task they see the need for without adding a 
 
 
 MVP:
-- Login with Twitter, GitHub
-- post issue
-- add bounty to issue (1. from yourself, 2. from yourself + web announcement link, 3. from someone else + web announcement link (reference) )
-- create bounty (= post issue + add bounty to this issue internally)
-- main page (bounties): sort by total bounty amount, date
-- second main page (unfunded issues): sorted by date (newest)
-- an email address for disputes
+- Login with Twitter (:x:), GitHub (:heavy_check_mark:)
+- post issue (:x:)
+- add bounty to issue (1. from yourself, 2. from yourself + web announcement link, 3. from someone else + web announcement link (reference) ) (:x:)
+- create bounty (= post issue + add bounty to this issue internally) (:x:)
+- main page (bounties): sort by total bounty amount, date (:x:)
+- second main page (unfunded issues): sorted by date (newest) (:x:)
+- an email address for disputes (:x:)
 
 Additional Features (most important to less important):
 
 1)
-- moderator functionality in UI
-- upvotes (You can only upvote comments, if you want to "upvote" an issue/bounty add your own bounty to signal support)
-- comments
-- lnurl-auth login
+- moderator functionality in UI (:x:)
+- upvotes (You can only upvote comments, if you want to "upvote" an issue/bounty add your own bounty to signal support) (:x:)
+- comments (:x:)
+- lnurl-auth login (:x:)
 
 2)
-- give control over funds to OpenSats (payment functionality) → marked as “funding secured” 
-- add dispute/claim 
+- give control over funds to OpenSats (payment functionality) → marked as “funding secured” (:x:)
+- add dispute/claim (:x:)
 
 ### Rough/incomplete enitity relationship diagram:
 
