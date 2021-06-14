@@ -9,7 +9,7 @@ Furthermore users can post an issue/task they see the need for without adding a 
 
 MVP:
 - Login with Twitter (:x:), GitHub (:heavy_check_mark:)
-- post issue (:x:)
+- post issue (:heavy_check_mark:)
 - add bounty to issue (1. from yourself, 2. from yourself + web announcement link, 3. from someone else + web announcement link (reference) ) (:x:)
 - create bounty (= post issue + add bounty to this issue internally) (:x:)
 - main page (bounties): sort by total bounty amount, date (:x:)
