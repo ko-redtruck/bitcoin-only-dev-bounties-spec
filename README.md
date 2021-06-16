@@ -4,7 +4,7 @@ The site should give visitors an overview over all available Bitcoin bounties. W
 
 Normal users also have the option to give OpenSats control over the funds to get higher trust. Users can also pledge a bounty to an already existing task/issue. They can add/clarify their own conditions which should not differ much from the existing conditions.
 
-Furthermore users can post an issue/task they see the need for without adding a bounty. These act as a sort of fundraisers, where users who also think this issue is important can pledge funds. As soon as someone adds a bounty to an unfunded issue it is marked as a bounty and displayed more prominently. 
+~~Furthermore users can post an issue/task they see the need for without adding a bounty. These act as a sort of fundraisers, where users who also think this issue is important can pledge funds. As soon as someone adds a bounty to an unfunded issue it is marked as a bounty and displayed more prominently.~~
 
 
 MVP:
