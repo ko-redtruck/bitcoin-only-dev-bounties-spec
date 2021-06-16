@@ -9,12 +9,11 @@ Furthermore users can post an issue/task they see the need for without adding a 
 
 MVP:
 - Login with Twitter (:x:), GitHub (:heavy_check_mark:)
-- post issue (:heavy_check_mark:)
-- add bounty to issue (1. from yourself, 2. from yourself + web announcement link, 3. from someone else + web announcement link (reference) ) (:x:)
-- create bounty (= post issue + add bounty to this issue internally) (:x:)
+- create new bounty (:heavy_check_mark:)
+- add bounty (1. from yourself, 2. from yourself + web announcement link, 3. from someone else + web announcement link (reference) ) (:heavy_check_mark:)
 - main page (bounties): sort by total bounty amount, date (:x:)
-- second main page (unfunded issues): sorted by date (newest) (:x:)
 - an email address for disputes (:x:)
+- nice ui (:x:)
 
 Additional Features (most important to less important):
 
@@ -35,10 +34,9 @@ Additional Features (most important to less important):
 ### SQL TABLE DESIGN
 ```
 await client.query(` CREATE TABLE IF NOT EXISTS Identities(
-      url VARCHAR(128),
-      name VARCHAR(64),
-      PRIMARY KEY(url),
-      UNIQUE(name)
+      id SERIAL PRIMARY KEY,
+      url VARCHAR(128) UNIQUE,
+      name VARCHAR(64) UNIQUE
   )`)
 
   await client.query(` CREATE TABLE IF NOT EXISTS Users(
@@ -46,7 +44,7 @@ await client.query(` CREATE TABLE IF NOT EXISTS Identities(
     provider_id VARCHAR(128),
     provider_name VARCHAR(32),
     created_on TIMESTAMP NOT NULL,
-    identity_url VARCHAR(128) REFERENCES Identities(url),
+    identity_id INTEGER REFERENCES Identities(id),
     privilege_level INT DEFAULT 0,
     UNIQUE(provider_id,provider_name)
   )
@@ -56,23 +54,22 @@ await client.query(` CREATE TABLE IF NOT EXISTS Identities(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES Users(id),
     created_on TIMESTAMP NOT NULL,
-    title VARCHAR(100) NOT NULL,
-    link VARCHAR(128),
-    description TEXT,
-    UNIQUE(title)
+    title VARCHAR(100) NOT NULL UNIQUE,
+    link VARCHAR(128) UNIQUE,
+    condition_text TEXT NOT NULL,
+    description TEXT
   )`)
 
   await client.query(`CREATE TABLE IF NOT EXISTS Bounties(
     issue_id INTEGER NOT NULL REFERENCES Issues(id),
     user_id INTEGER NOT NULL REFERENCES Users(id),
-    identity_url VARCHAR(128) NOT NULL REFERENCES Identities(url),
-    amount INT NOT NULL,
+    identity_id INTEGER NOT NULL REFERENCES Identities(id),
+    amount INTEGER NOT NULL,
     created_on TIMESTAMP NOT NULL,
     funding_secured BOOLEAN DEFAULT false,
     announchment_link VARCHAR(128),
-    condition_text TEXT,
-    payed_out_to VARCHAR(128) REFERENCES Identities(url),
-    PRIMARY KEY(issue_id,user_id,identity_url)
+    payed_out_to INTEGER REFERENCES Identities(id),
+    PRIMARY KEY(issue_id,identity_id)
   )
 `)
 
