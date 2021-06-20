@@ -1,7 +1,7 @@
 # bitcoin-only-dev-bounties-spec
 ## Live prototype: https://bitcoin-dev-bounties-z6s58.ondigitalocean.app/
 ### WIP Implementation: https://github.com/ko-redtruck/bitcoin-only-open-source-bounties-express
-The site should give visitors an overview over all available Bitcoin bounties. We do not expect all bounty issuers to post their bounties themselves, so users can publish bounties linked to posts from Twitter or GitHub. If someone anonymous (Login with LNURL-Auth) wants to start a bounty the person should send the funds to OpenSats to ensure the payment is made if the task has been fulfilled. In cases of dispute separate moderators or OpenSats board decides if the bounty is paid out. 
+The site should give visitors an overview over all available Bitcoin bounties and let users filter by programming language, projects and type of work (frontend, backend,...) .  We do not expect all bounty issuers to post their bounties themselves, so users can publish bounties linked to posts from Twitter or GitHub. If someone anonymous (Login with LNURL-Auth) wants to start a bounty the person should send the funds to OpenSats to ensure the payment is made if the task has been fulfilled. In cases of dispute separate moderators or OpenSats board decides if the bounty is paid out. 
 
 Normal users also have the option to give OpenSats control over the funds to get higher trust. Users can also pledge a bounty to an already existing task/issue. They can add/clarify their own conditions which should not differ much from the existing conditions.
 
@@ -19,6 +19,7 @@ Additional Features (most important to less important):
 
 1)
 - moderator functionality in UI (:x:)
+- filter by repo/project, programming language, work type (frontend/ui vs wallet backend vs webserver vs ...) (:x:)
 - upvotes (You can only upvote comments, if you want to "upvote" an issue/bounty add your own bounty to signal support) (:x:)
 - comments (:x:)
 - lnurl-auth login (:x:)
