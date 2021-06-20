@@ -1,4 +1,5 @@
 # bitcoin-only-dev-bounties-spec
+## Live prototype: https://bitcoin-dev-bounties-z6s58.ondigitalocean.app/
 ### WIP Implementation: https://github.com/ko-redtruck/bitcoin-only-open-source-bounties-express
 The site should give visitors an overview over all available Bitcoin bounties. We do not expect all bounty issuers to post their bounties themselves, so users can publish bounties linked to posts from Twitter or GitHub. If someone anonymous (Login with LNURL-Auth) wants to start a bounty the person should send the funds to OpenSats to ensure the payment is made if the task has been fulfilled. In cases of dispute separate moderators or OpenSats board decides if the bounty is paid out. 
 
@@ -11,9 +12,8 @@ MVP:
 - Login with Twitter (:x:), GitHub (:heavy_check_mark:)
 - create new bounty (:heavy_check_mark:)
 - add bounty (1. from yourself, 2. from yourself + web announcement link, 3. from someone else + web announcement link (reference) ) (:heavy_check_mark:)
-- main page (bounties): sort by total bounty amount, date (:x:)
+- main page (bounties): sort by total bounty amount (:heavy_check_mark:), date (:x:)
 - an email address for disputes (:x:)
-- nice ui (:x:)
 
 Additional Features (most important to less important):
 
