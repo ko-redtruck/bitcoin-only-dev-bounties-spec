@@ -7,6 +7,12 @@ Normal users also have the option to give OpenSats control over the funds to get
 
 ~~Furthermore users can post an issue/task they see the need for without adding a bounty. These act as a sort of fundraisers, where users who also think this issue is important can pledge funds. As soon as someone adds a bounty to an unfunded issue it is marked as a bounty and displayed more prominently.~~
 
+#### Lightning Integration
+
+- "Add instant bounty"/"Pay bounty" --> let anon or logged in users instantly add funded bounties
+- funds paid when pull request merged or when specified like in the payout conditions
+- upvote/like option for logged in users: to upvote you have to pay a bounty (amount free to choose)
+- upvote option should hopefully incentize more users to pay bounties
 
 MVP:
 - Login with Twitter (:x:), GitHub (:heavy_check_mark:)
